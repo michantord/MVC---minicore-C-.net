@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcular Comisiones - ComisionesVentas</title>
+    <!-- Agregar Bootstrap para estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="mb-4 text-center" style="color: #2c3e50;">Calcular Comisiones</h1>
+
+    <div class="container">
+        <form class="bg-light mb-4 rounded p-3 shadow-sm" id="filterForm">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Fecha Inicial</label>
+                    <input type="date" id="startDate" class="form-control" value="2025-06-01" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Fecha Final</label>
+                    <input type="date" id="endDate" class="form-control" value="2025-06-17" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Vendedor</label>
+                    <select id="vendedorId" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="1">Ana Gomez</option>
+                        <option value="2">Carlos Ruiz</option>
+                        <option value="3">María López</option>
+                        <option value="4">Pedro Sánchez</option>
+                        <option value="5">Lucía Martínez</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mt-3 text-center">
+                <button type="button" class="btn btn-primary btn-lg" onclick="filterResults()">Calcular</button>
+            </div>
+        </form>
+
+        <h2 class="mb-4 text-center" style="color: #2c3e50;">Resultados</h2>
+        <div class="table-responsive">
+            <table class="table-striped table-hover table-bordered table" id="resultsTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID Venta</th>
+                        <th>Fecha</th>
+                        <th>Monto</th>
+                        <th>Vendedor</th>
+                        <th>% Comisión</th>
+                        <th>Comisión</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Datos iniciales se llenarán con JavaScript -->
+                </tbody>
+                <tfoot class="table-dark" id="tableFoot">
+                    <tr>
+                        <td colspan="5" class="fw-bold text-end">Total Comisión:</td>
+                        <td class="fw-bold" id="totalCommission">$0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <!-- Opcional: Agregar script de Bootstrap para funcionalidades -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+        // Datos quemados basados en DbInitializer
+        const salesData = [
+            { id: 1, fecha: new Date("2025-06-01"), monto: 500, vendedorId: 1, vendedorNombre: "Ana Gomez", reglaId: 1, porcentajeComision: 5, comision: 25 },
+            { id: 2, fecha: new Date("2025-06-02"), monto: 1200, vendedorId: 1, vendedorNombre: "Ana Gomez", reglaId: 2, porcentajeComision: 10, comision: 120 },
+            { id: 3, fecha: new Date("2025-06-03"), monto: 6000, vendedorId: 1, vendedorNombre: "Ana Gomez", reglaId: 3, porcentajeComision: 15, comision: 900 },
+            { id: 4, fecha: new Date("2025-06-04"), monto: 300, vendedorId: 2, vendedorNombre: "Carlos Ruiz", reglaId: 1, porcentajeComision: 5, comision: 15 },
+            { id: 5, fecha: new Date("2025-06-05"), monto: 2000, vendedorId: 2, vendedorNombre: "Carlos Ruiz", reglaId: 2, porcentajeComision: 10, comision: 200 },
+            { id: 6, fecha: new Date("2025-06-06"), monto: 7000, vendedorId: 2, vendedorNombre: "Carlos Ruiz", reglaId: 3, porcentajeComision: 15, comision: 1050 },
+            { id: 7, fecha: new Date("2025-06-07"), monto: 800, vendedorId: 3, vendedorNombre: "María López", reglaId: 1, porcentajeComision: 5, comision: 40 },
+            { id: 8, fecha: new Date("2025-06-08"), monto: 3500, vendedorId: 3, vendedorNombre: "María López", reglaId: 2, porcentajeComision: 10, comision: 350 },
+            { id: 9, fecha: new Date("2025-06-09"), monto: 5500, vendedorId: 3, vendedorNombre: "María López", reglaId: 3, porcentajeComision: 15, comision: 825 },
+            { id: 10, fecha: new Date("2025-06-10"), monto: 400, vendedorId: 4, vendedorNombre: "Pedro Sánchez", reglaId: 1, porcentajeComision: 5, comision: 20 },
+            { id: 11, fecha: new Date("2025-06-11"), monto: 1800, vendedorId: 4, vendedorNombre: "Pedro Sánchez", reglaId: 2, porcentajeComision: 10, comision: 180 },
+            { id: 12, fecha: new Date("2025-06-12"), monto: 8000, vendedorId: 4, vendedorNombre: "Pedro Sánchez", reglaId: 3, porcentajeComision: 15, comision: 1200 },
+            { id: 13, fecha: new Date("2025-06-13"), monto: 900, vendedorId: 5, vendedorNombre: "Lucía Martínez", reglaId: 1, porcentajeComision: 5, comision: 45 },
+            { id: 14, fecha: new Date("2025-06-14"), monto: 2500, vendedorId: 5, vendedorNombre: "Lucía Martínez", reglaId: 2, porcentajeComision: 10, comision: 250 },
+            { id: 15, fecha: new Date("2025-06-15"), monto: 6500, vendedorId: 5, vendedorNombre: "Lucía Martínez", reglaId: 3, porcentajeComision: 15, comision: 975 },
+            { id: 16, fecha: new Date("2025-06-16"), monto: 700, vendedorId: 1, vendedorNombre: "Ana Gomez", reglaId: 1, porcentajeComision: 5, comision: 35 },
+            { id: 17, fecha: new Date("2025-06-16"), monto: 3000, vendedorId: 2, vendedorNombre: "Carlos Ruiz", reglaId: 2, porcentajeComision: 10, comision: 300 },
+            { id: 18, fecha: new Date("2025-06-17"), monto: 7500, vendedorId: 3, vendedorNombre: "María López", reglaId: 3, porcentajeComision: 15, comision: 1125 },
+            { id: 19, fecha: new Date("2025-06-17"), monto: 1000, vendedorId: 4, vendedorNombre: "Pedro Sánchez", reglaId: 1, porcentajeComision: 5, comision: 50 },
+            { id: 20, fecha: new Date("2025-06-17"), monto: 4500, vendedorId: 5, vendedorNombre: "Lucía Martínez", reglaId: 2, porcentajeComision: 10, comision: 450 }
+        ];
+
+        // Función para filtrar y actualizar la tabla
+        function filterResults() {
+            const startDate = new Date(document.getElementById("startDate").value);
+            const endDate = new Date(document.getElementById("endDate").value);
+            const vendedorId = document.getElementById("vendedorId").value;
+
+            const filteredSales = salesData.filter(sale => {
+                const saleDate = new Date(sale.fecha);
+                const withinDateRange = (!startDate || saleDate >= startDate) && (!endDate || saleDate <= endDate);
+                const matchesVendor = !vendedorId || sale.vendedorId.toString() === vendedorId;
+                return withinDateRange && matchesVendor;
+            });
+
+            const tableBody = document.getElementById("tableBody");
+            const tableFoot = document.getElementById("tableFoot");
+            tableBody.innerHTML = "";
+            const totalCommission = filteredSales.reduce((sum, sale) => sum + sale.comision, 0);
+
+            filteredSales.forEach(sale => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${sale.id}</td>
+                    <td>${sale.fecha.toLocaleDateString()}</td>
+                    <td>$${sale.monto.toFixed(2)}</td>
+                    <td>${sale.vendedorNombre}</td>
+                    <td>${sale.porcentajeComision}%</td>
+                    <td>$${sale.comision.toFixed(2)}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            document.getElementById("totalCommission").textContent = `$${totalCommission.toFixed(2)}`;
+            tableFoot.style.display = filteredSales.length > 0 ? "" : "none";
+        }
+
+        // Cargar datos iniciales al cargar la página
+        window.onload = filterResults;
+    </script>
+</body>
+</html>
