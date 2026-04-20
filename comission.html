@@ -24,11 +24,11 @@
                     <label class="form-label">Vendedor</label>
                     <select id="vendedorId" class="form-select">
                         <option value="">Todos</option>
-                        <option value="1">Ana Gomez</option>
-                        <option value="2">Carlos Ruiz</option>
-                        <option value="3">María López</option>
-                        <option value="4">Pedro Sánchez</option>
-                        <option value="5">Lucía Martínez</option>
+                        <option value="1">Fernando Galindo</option>
+                        <option value="2">Juan Feijoo</option>
+                        <option value="3">Michelle Reyes</option>
+                        <option value="4">Gabriel Bortoleto</option>
+                        <option value="5">Charles Lecrec</option>
                     </select>
                 </div>
             </div>
@@ -68,26 +68,26 @@
     <script>
         // Datos quemados basados en DbInitializer
         const salesData = [
-            { id: 1, fecha: new Date("2025-06-01"), monto: 500, vendedorId: 1, vendedorNombre: "Ana Gomez", reglaId: 1, porcentajeComision: 5, comision: 25 },
-            { id: 2, fecha: new Date("2025-06-02"), monto: 1200, vendedorId: 1, vendedorNombre: "Ana Gomez", reglaId: 2, porcentajeComision: 10, comision: 120 },
-            { id: 3, fecha: new Date("2025-06-03"), monto: 6000, vendedorId: 1, vendedorNombre: "Ana Gomez", reglaId: 3, porcentajeComision: 15, comision: 900 },
-            { id: 4, fecha: new Date("2025-06-04"), monto: 300, vendedorId: 2, vendedorNombre: "Carlos Ruiz", reglaId: 1, porcentajeComision: 5, comision: 15 },
-            { id: 5, fecha: new Date("2025-06-05"), monto: 2000, vendedorId: 2, vendedorNombre: "Carlos Ruiz", reglaId: 2, porcentajeComision: 10, comision: 200 },
-            { id: 6, fecha: new Date("2025-06-06"), monto: 7000, vendedorId: 2, vendedorNombre: "Carlos Ruiz", reglaId: 3, porcentajeComision: 15, comision: 1050 },
-            { id: 7, fecha: new Date("2025-06-07"), monto: 800, vendedorId: 3, vendedorNombre: "María López", reglaId: 1, porcentajeComision: 5, comision: 40 },
-            { id: 8, fecha: new Date("2025-06-08"), monto: 3500, vendedorId: 3, vendedorNombre: "María López", reglaId: 2, porcentajeComision: 10, comision: 350 },
-            { id: 9, fecha: new Date("2025-06-09"), monto: 5500, vendedorId: 3, vendedorNombre: "María López", reglaId: 3, porcentajeComision: 15, comision: 825 },
-            { id: 10, fecha: new Date("2025-06-10"), monto: 400, vendedorId: 4, vendedorNombre: "Pedro Sánchez", reglaId: 1, porcentajeComision: 5, comision: 20 },
-            { id: 11, fecha: new Date("2025-06-11"), monto: 1800, vendedorId: 4, vendedorNombre: "Pedro Sánchez", reglaId: 2, porcentajeComision: 10, comision: 180 },
-            { id: 12, fecha: new Date("2025-06-12"), monto: 8000, vendedorId: 4, vendedorNombre: "Pedro Sánchez", reglaId: 3, porcentajeComision: 15, comision: 1200 },
-            { id: 13, fecha: new Date("2025-06-13"), monto: 900, vendedorId: 5, vendedorNombre: "Lucía Martínez", reglaId: 1, porcentajeComision: 5, comision: 45 },
-            { id: 14, fecha: new Date("2025-06-14"), monto: 2500, vendedorId: 5, vendedorNombre: "Lucía Martínez", reglaId: 2, porcentajeComision: 10, comision: 250 },
-            { id: 15, fecha: new Date("2025-06-15"), monto: 6500, vendedorId: 5, vendedorNombre: "Lucía Martínez", reglaId: 3, porcentajeComision: 15, comision: 975 },
-            { id: 16, fecha: new Date("2025-06-16"), monto: 700, vendedorId: 1, vendedorNombre: "Ana Gomez", reglaId: 1, porcentajeComision: 5, comision: 35 },
-            { id: 17, fecha: new Date("2025-06-16"), monto: 3000, vendedorId: 2, vendedorNombre: "Carlos Ruiz", reglaId: 2, porcentajeComision: 10, comision: 300 },
-            { id: 18, fecha: new Date("2025-06-17"), monto: 7500, vendedorId: 3, vendedorNombre: "María López", reglaId: 3, porcentajeComision: 15, comision: 1125 },
-            { id: 19, fecha: new Date("2025-06-17"), monto: 1000, vendedorId: 4, vendedorNombre: "Pedro Sánchez", reglaId: 1, porcentajeComision: 5, comision: 50 },
-            { id: 20, fecha: new Date("2025-06-17"), monto: 4500, vendedorId: 5, vendedorNombre: "Lucía Martínez", reglaId: 2, porcentajeComision: 10, comision: 450 }
+            { id: 1, fecha: new Date("2026-01-01T00:00:00"), monto: 500, vendedorId: 1, vendedorNombre: "Fernando Galindo", reglaId: 1, porcentajeComision: 5, comision: 25 },
+            { id: 2, fecha: new Date("2026-01-12T00:00:00"), monto: 1200, vendedorId: 1, vendedorNombre: "Fernando Galindo", reglaId: 2, porcentajeComision: 10, comision: 120 },
+            { id: 3, fecha: new Date("2026-02-05T00:00:00"), monto: 6000, vendedorId: 1, vendedorNombre: "Fernando Galindo", reglaId: 3, porcentajeComision: 15, comision: 900 },
+            { id: 4, fecha: new Date("2026-01-08T00:00:00"), monto: 300, vendedorId: 2, vendedorNombre: "Juan Feijoo", reglaId: 1, porcentajeComision: 5, comision: 15 },
+            { id: 5, fecha: new Date("2026-02-10T00:00:00"), monto: 2000, vendedorId: 2, vendedorNombre: "Juan Feijoo", reglaId: 2, porcentajeComision: 10, comision: 200 },
+            { id: 6, fecha: new Date("2026-03-01T00:00:00"), monto: 7000, vendedorId: 2, vendedorNombre: "Juan Feijoo", reglaId: 3, porcentajeComision: 15, comision: 1050 },
+            { id: 7, fecha: new Date("2026-01-15T00:00:00"), monto: 800, vendedorId: 3, vendedorNombre: "Michelle Reyes", reglaId: 1, porcentajeComision: 5, comision: 40 },
+            { id: 8, fecha: new Date("2026-02-18T00:00:00"), monto: 3500, vendedorId: 3, vendedorNombre: "Michelle Reyes", reglaId: 2, porcentajeComision: 10, comision: 350 },
+            { id: 9, fecha: new Date("2026-03-10T00:00:00"), monto: 5500, vendedorId: 3, vendedorNombre: "Michelle Reyes", reglaId: 3, porcentajeComision: 15, comision: 825 },
+            { id: 10, fecha: new Date("2026-01-20T00:00:00"), monto: 400, vendedorId: 4, vendedorNombre: "Gabriel Bortoleto", reglaId: 1, porcentajeComision: 5, comision: 20 },
+            { id: 11, fecha: new Date("2026-02-22T00:00:00"), monto: 1800, vendedorId: 4, vendedorNombre: "Gabriel Bortoleto", reglaId: 2, porcentajeComision: 10, comision: 180 },
+            { id: 12, fecha: new Date("2026-03-15T00:00:00"), monto: 8000, vendedorId: 4, vendedorNombre: "Gabriel Bortoleto", reglaId: 3, porcentajeComision: 15, comision: 1200 },
+            { id: 13, fecha: new Date("2026-01-25T00:00:00"), monto: 900, vendedorId: 5, vendedorNombre: "Charles Lecrec", reglaId: 1, porcentajeComision: 5, comision: 45 },
+            { id: 14, fecha: new Date("2026-02-28T00:00:00"), monto: 2500, vendedorId: 5, vendedorNombre: "Charles Lecrec", reglaId: 2, porcentajeComision: 10, comision: 250 },
+            { id: 15, fecha: new Date("2026-03-20T00:00:00"), monto: 6500, vendedorId: 5, vendedorNombre: "Charles Lecrec", reglaId: 3, porcentajeComision: 15, comision: 975 },
+            { id: 16, fecha: new Date("2026-02-02T00:00:00"), monto: 700, vendedorId: 1, vendedorNombre: "Fernando Galindo", reglaId: 1, porcentajeComision: 5, comision: 35 },
+            { id: 17, fecha: new Date("2026-03-05T00:00:00"), monto: 3000, vendedorId: 2, vendedorNombre: "Juan Feijoo", reglaId: 2, porcentajeComision: 10, comision: 300 },
+            { id: 18, fecha: new Date("2026-03-25T00:00:00"), monto: 7500, vendedorId: 3, vendedorNombre: "Michelle Reyes", reglaId: 3, porcentajeComision: 15, comision: 1125 },
+            { id: 19, fecha: new Date("2026-03-28T00:00:00"), monto: 1000, vendedorId: 4, vendedorNombre: "Gabriel Bortoleto", reglaId: 1, porcentajeComision: 5, comision: 50 },
+            { id: 20, fecha: new Date("2026-03-30T00:00:00"), monto: 4500, vendedorId: 5, vendedorNombre: "Charles Lecrec", reglaId: 2, porcentajeComision: 10, comision: 450 }
         ];
 
         // Función para filtrar y actualizar la tabla
