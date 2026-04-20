@@ -22,11 +22,11 @@ public class HomeController : Controller
     {
         var ventasQuery = _context.Ventas.Include(v => v.Vendedor).AsQueryable();
 
-        // Defaults from HTML
+        // Defaults from HTML -> Updated to Jan - Mar 2026
         if (!startDate.HasValue && !endDate.HasValue && !vendedorId.HasValue && Request.Method == "GET" && !Request.Query.Any())
         {
-            startDate = new DateTime(2025, 6, 1);
-            endDate = new DateTime(2025, 6, 17);
+            startDate = new DateTime(2026, 1, 1);
+            endDate = new DateTime(2026, 3, 31);
         }
 
         if (startDate.HasValue)
